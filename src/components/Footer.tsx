@@ -34,14 +34,24 @@ export default function Footer() {
         <div className="border-t border-white/20 my-10"></div>
 
         {/* Bottom row */}
-        <div className="flex items-center gap-x-4">
-          <img
-            src="/ft_logo_mini.svg"
-            alt="Flute Technologies"
-            className="h-12"
-          />
-          <div className="text-white text-center md:text-left">
-            © 2026 Flute Technologies. All rights reserved.
+        <div className="flex flex-col items-start gap-y-6">
+          <div className="flex items-center gap-x-4">
+            <a
+              className="text-white/80 hover:text-white hover:underline transition"
+              href="/privacy-policy"
+            >
+              Read our Privacy Policy here
+            </a>
+          </div>
+          <div className="flex items-center gap-x-4">
+            <img
+              src="/ft_logo_mini.svg"
+              alt="Flute Technologies"
+              className="h-12"
+            />
+            <div className="text-white/80 text-center md:text-left">
+              © 2026 Flute Technologies. All rights reserved.
+            </div>
           </div>
         </div>
       </div>
