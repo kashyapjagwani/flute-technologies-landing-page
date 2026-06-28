@@ -1,10 +1,11 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.tsx'
+import { ViteReactSSG } from 'vite-react-ssg'
+import Home from './pages/Home'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+export const createRoot = ViteReactSSG({
+  routes: [
+    { path: '/', Component: Home },
+    { path: '/privacy-policy', Component: PrivacyPolicy },
+  ],
+})
