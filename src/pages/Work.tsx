@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Head } from "vite-react-ssg";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -13,10 +14,61 @@ const projects = [
     description:
       "A full rebrand and CMS-driven website for a premium wood pressed oil brand based in Mumbai. We built a content-rich site using React.js, Contentful, and Google Analytics, giving the client full control over their story and the visibility into their audience to drive business decisions.",
     image: "/projects/satej-wood-pressed-oils/hero-section.png",
+    imageBlur: "/projects/satej-wood-pressed-oils/hero-section-blur.webp",
+    imageCompressed: "/projects/satej-wood-pressed-oils/hero-section-compressed.png",
     imageAlt: "Satej Wood Pressed Oils website hero section",
     url: "https://satej-woodpressed-oils-dp3qkg4k8i3g.edgeone.dev/",
   },
 ];
+
+function ProgressiveImage({
+  src,
+  blur,
+  compressed,
+  alt,
+  className,
+}: {
+  src: string;
+  blur: string;
+  compressed: string;
+  alt: string;
+  className: string;
+}) {
+  const [compressedLoaded, setCompressedLoaded] = useState(false);
+  const [fullLoaded, setFullLoaded] = useState(false);
+
+  return (
+    <>
+      {/* Blur placeholder — stays in normal flow so the container never collapses */}
+      <img
+        src={blur}
+        alt=""
+        aria-hidden
+        className={className}
+        style={{ filter: "blur(12px)", transform: "scale(1.08)" }}
+      />
+      {/* Compressed intermediate — fades in as soon as it arrives */}
+      <img
+        src={compressed}
+        alt=""
+        aria-hidden
+        onLoad={() => setCompressedLoaded(true)}
+        className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 ${
+          compressedLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      />
+      {/* Full quality — fades in last */}
+      <img
+        src={src}
+        alt={alt}
+        onLoad={() => setFullLoaded(true)}
+        className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
+          fullLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      />
+    </>
+  );
+}
 
 function ProjectCard({
   client,
@@ -26,6 +78,8 @@ function ProjectCard({
   year,
   description,
   image,
+  imageBlur,
+  imageCompressed,
   imageAlt,
   url,
 }: (typeof projects)[number]) {
@@ -33,8 +87,10 @@ function ProjectCard({
     <article className="text-font">
       {/* Image */}
       <div className="relative overflow-hidden">
-        <img
+        <ProgressiveImage
           src={image}
+          blur={imageBlur}
+          compressed={imageCompressed}
           alt={imageAlt}
           className="w-full aspect-video md:aspect-auto object-cover object-center"
         />
