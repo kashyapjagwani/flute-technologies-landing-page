@@ -1,9 +1,10 @@
-import { Head } from 'vite-react-ssg'
-import CoreExpertise from '../components/CoreExpertise'
-import Footer from '../components/Footer'
-import Hero from '../components/Hero'
-import Navbar from '../components/Navbar'
-import OurServices from '../components/OurServices'
+import { Head } from "vite-react-ssg";
+import CoreExpertise from "../components/CoreExpertise";
+import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import Navbar from "../components/Navbar";
+import OurServices from "../components/OurServices";
+import OurWork from "../components/OurWork";
 
 export default function Home() {
   return (
@@ -19,7 +20,8 @@ export default function Home() {
       <Hero />
       <CoreExpertise />
       <OurServices />
+      <OurWork />
       <Footer />
     </>
-  )
+  );
 }
