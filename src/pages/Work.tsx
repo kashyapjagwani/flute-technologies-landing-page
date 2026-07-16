@@ -6,18 +6,40 @@ import Navbar from "../components/Navbar";
 const projects = [
   {
     index: "01",
-    client: "Satej Wood Pressed Oils",
+    client: "Satej Wood Pressed Oils (Mumbai, India)",
     title: "Satej Wood Pressed Oils",
     services: ["Rebrand", "Website Development"],
-    technology: ["React.js, Tailwind, CMS", "Google Analytics"],
-    year: "2026",
+    technologies: ["React.js, Tailwind, CMS", "Google Analytics"],
+    year: "Ongoing",
     description:
       "A full rebrand and CMS-driven website for a premium wood pressed oil brand based in Mumbai. We built a content-rich site using React.js, Contentful, and Google Analytics, giving the client full control over their story and the visibility into their audience to drive business decisions.",
     image: "/projects/satej-wood-pressed-oils/hero-section.png",
     imageBlur: "/projects/satej-wood-pressed-oils/hero-section-blur.webp",
-    imageCompressed: "/projects/satej-wood-pressed-oils/hero-section-compressed.png",
+    imageCompressed:
+      "/projects/satej-wood-pressed-oils/hero-section-compressed.png",
     imageAlt: "Satej Wood Pressed Oils website hero section",
     url: "https://satej-woodpressed-oils-dp3qkg4k8i3g.edgeone.dev/",
+  },
+  {
+    index: "02",
+    client: "Salt & Straw (Seattle, USA)",
+    title: "Salt & Straw Icecream",
+    services: [
+      "Product Design",
+      "Information Architecture",
+      "Wireframing",
+      "Online Brand Strategy",
+    ],
+    technologies: ["Figma", "Interactive Prototyping", "User Flow Mapping"],
+    year: "2025",
+    description:
+      "A comprehensive UX redesign and brand strategy for the premium artisanal ice cream brand. We transformed their digital experience by restructuring complex menus, streamlining monotonous ordering and subscription flows, and ideating on intuitive operational dashboards to bridge the gap between online ordering and real-world kitchen fulfillment.",
+    image: "/projects/salt-and-straw-icecreams/hero-section.png",
+    imageBlur: "/projects/salt-and-straw-icecreams/hero-section.webp",
+    imageCompressed:
+      "/projects/salt-and-straw-icecreams/hero-section-compressed.png",
+    imageAlt: "Salt & Straw website hero section",
+    url: "https://saltandstraw.com/",
   },
 ];
 
@@ -74,7 +96,7 @@ function ProjectCard({
   client,
   title,
   services,
-  technology,
+  technologies,
   year,
   description,
   image,
@@ -135,7 +157,7 @@ function ProjectCard({
             Technology
           </p>
           <p className="text-base md:text-lg font-light">
-            {technology.join(", ")}
+            {technologies.join(", ")}
           </p>
         </div>
         <div>
